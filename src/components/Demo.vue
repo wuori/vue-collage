@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <slideshow :images="images"
+        <collage :images="images"
                    :collageSizeMin="3"
                    :collageSizeMax="5"
                    :showNoImagesMsg="true"
@@ -8,17 +8,17 @@
                    :showLoadingMsg="true"
                    loadingMsg="Loading..."
                    height="100%">
-        </slideshow>
+        </collage>
     </div>
 </template>
 
 <script type="text/ecmascript-6">
-    import Slideshow from "../App.vue";
+    import Collage from "../App.vue";
 
     export default {
         name: 'Demo',
         components: {
-            Slideshow
+            Collage
         },
         data() {
             return {
