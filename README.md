@@ -7,10 +7,10 @@ Collages are made in a way that vertical and horizontal images fit to container 
 Collages take up 100% of the container height.
 
 ## Credits:
-This component is just a stripped-down version of `vue-collage-slideshow` from [edicasoft](https://github.com/edicasoft/vue-collage-slideshow).
+This component is just a stripped-down version of `vue-collage-slideshow` from [edicasoft](https://github.com/edicasoft/vue-collage-slideshow), removing the slideshow/carousel components and randomization of the number of images shown (will default to `collageSizeMax` or `images.length`, whichever is greater.
 
 ## Demo:
-[Check out the demo on jsFiddle](https://jsfiddle.net/dmykhailova/xwgasdt7/show/)
+[Check out the demo on jsFiddle](https://jsfiddle.net/wuori/noty8215/9/show)
 
 ## Installation:
 Just use `npm install --save vue-collage`
