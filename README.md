@@ -1,22 +1,28 @@
-# vue-collage-slideshow
-Responsive slideshow with animated collages for Vue.js.
+# vue-collage
+Responsive collages with animated images for Vue.js.
 After given images are preloaded, component generates collages with different templates.
 Every slide can contain up to 5 pictures.
 Using transition animation, the component creates a different slide effects for every image in a collage (slide from the left/right/top/bottom).
 Collages are made in a way that vertical and horizontal images fit to container as best as possible.
-Slideshow takes up 100% of the container height.
+Collages take up 100% of the container height.
+
+## Credits:
+This component is just a stripped-down version of `vue-collage-slideshow` from [edicasoft](https://github.com/edicasoft/vue-collage-slideshow).
+
 ## Demo:
 [Check out the demo on jsFiddle](https://jsfiddle.net/dmykhailova/xwgasdt7/show/)
+
 ## Installation:
-Just use `npm install --save vue-collage-slideshow`
+Just use `npm install --save vue-collage`
+
 ## Set up:
 ```
-import Slideshow from 'vue-collage-slideshow';
+import Collage from 'vue-collage';
 
 export default {
   ...
   components: {
-    Slideshow
+    Collage
   }
   ...
 };
@@ -24,10 +30,8 @@ export default {
 
 ## Usage:
 ```
-<slideshow :images="images" 
-           :slidesInterval="4000"
-            height="600px">
-</slideshow>
+<collage :images="images" height="600px">
+</collage>
 ```
 #### Props:
 
@@ -37,12 +41,11 @@ export default {
 | height              | String    | '600px'                                         | Define the height of the slideshow container. Could be 100% etc  |
 | collageSizeMin      | Number    |  2                                              | Define the minimum collage size (number of images that can be in one collage) |
 | collageSizeMax      | Number    |  5                                              | Define the maximum number of images that can be in one collage |
-| slidesInterval      | Number    | 4000                                            | Minimum is `1000` for better experience. Define the time in miliseconds before the next slide will be played |
 | showNoImagesMsg     | Boolean   | true                                            | Whether display "no images" text or not |
 | noImagesMsg         | String    | 'No Images'                                     | Define the text of the message that shows up if there are no images |
 | showLoadingMsg      | Boolean   | true                                            | Whether display the loader for images preloading or not |
 | loadingMsg          | String    | 'Loading...'                                    | Define the text of the preloader message |
-| keyboardNavigation  | Boolean   | false                                           | Enable arrows navigation and play/pause on space button  |
+
 #### Slots:
 "loader" - slot to place loading message when images are loading
 ```
@@ -57,4 +60,4 @@ export default {
 </template>
             ```
 ## Contribution
-Feel free to contribute on [GitHub](https://github.com/edicasoft/vue-collage-slideshow)
+Feel free to contribute on [GitHub](https://github.com/wuori/vue-collage)
