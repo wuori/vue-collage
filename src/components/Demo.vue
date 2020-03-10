@@ -2,7 +2,7 @@
     <div id="app">
         <collage :images="images"
                    :collageSizeMin="3"
-                   :collageSizeMax="5"
+                   :collageSizeMax="6"
                    :showNoImagesMsg="true"
                    noImagesMsg="No Images"
                    :showLoadingMsg="true"

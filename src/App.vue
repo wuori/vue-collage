@@ -26,6 +26,7 @@
     import TripleSlide from '@/components/slides/TripleSlide';
     import FourImagesSlide from '@/components/slides/FourImagesSlide';
     import FiveImagesSlide from '@/components/slides/FiveImagesSlide';
+    import SixImagesSlide from '@/components/slides/SixImagesSlide';
     import LoadingSpinner from '@/components/LoadingSpinner';
     import './assets/main.scss'
     import './assets/slides.scss'
@@ -33,7 +34,7 @@
     export default {
         name: 'VueCollage',
         components: {
-            SimpleSlide, TripleSlide, FourImagesSlide, LoadingSpinner, FiveImagesSlide
+            SimpleSlide, TripleSlide, FourImagesSlide, LoadingSpinner, FiveImagesSlide, SixImagesSlide
         },
         props: {
             images: {
@@ -47,12 +48,12 @@
             collageSizeMin: {
                 type: Number,
                 default: 1,
-                validator: (value) => value >= 1 && value <= 5
+                validator: (value) => value >= 1 && value <= 6
             },
             collageSizeMax: {
                 type: Number,
                 default: 5,
-                validator: (value) => value >= 1 && value <= 5
+                validator: (value) => value >= 1 && value <= 6
             },
             noImagesMsg: {
                 type: String,
@@ -107,6 +108,8 @@
                         return 'FourImagesSlide';
                     case 5:
                         return 'FiveImagesSlide';
+                    case 6:
+                        return 'SixImagesSlide';
                     default:
                         return 'SimpleSlide';
                 }
