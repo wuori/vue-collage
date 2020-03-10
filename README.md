@@ -1,3 +1,7 @@
+[![npm](https://img.shields.io/npm/v/vue-collage.svg)](https://www.npmjs.com/package/vue-collage)
+[![vue2](https://img.shields.io/badge/vue-2.x-brightgreen.svg)](https://vuejs.org/)
+
+
 # vue-collage
 Responsive collages with animated images for Vue.js.
 After given images are preloaded, component generates collages with different templates.
