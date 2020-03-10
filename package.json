@@ -1,28 +1,24 @@
 {
-  "name": "vue-collage-slideshow",
-  "description": "Responsive slideshow with animated collages for Vue.js",
-  "version": "0.2.7",
+  "name": "vue-collage",
+  "description": "Responsive, animated collages for Vue.js",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/edicasoft/vue-collage-slideshow.git"
+    "url": "git+https://github.com/wuori/vue-collage.git"
   },
   "keywords": [
     "vue",
-    "slideshow",
     "collage"
   ],
-  "author": "Daria Mykhailova",
+  "author": "Michael Wuori",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "build-bundle": "vue-cli-service build --target lib --name VueCollageSlideshow"
+    "build-bundle": "vue-cli-service build --target lib --name VueCollage"
   },
   "dependencies": {
-    "@flockos/vue-components": "^0.1.71",
-    "vue": "^2.5.17",
-    "vue-carousel": "^0.17.0",
-    "vue-gallery": "^1.5.0"
+    "vue": "^2.5.17"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.1.1",
@@ -59,7 +55,7 @@
     "last 2 versions",
     "not ie <= 8"
   ],
-  "main": "./dist/VueCollageSlideshow.common.js",
+  "main": "./dist/VueCollage.common.js",
   "files": [
     "dist/*",
     "src/*",

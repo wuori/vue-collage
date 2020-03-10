@@ -2,8 +2,10 @@
     <div :class="['vc-slideshow-slide-inner', slideClass]">
         <div class="vc-slideshow-img-animated-wrapper" v-for="(img, idx) in images" :key="idx">
             <slide-animation :animationDuration="animationDuration">
-                <img :src="img.image" v-if="showImages"
-                     :class="['vc-slideshow-img',{'vc-slideshow-is-vertical': img.isVertical, 'vc-slideshow-is-horizontal': img.isHorizontal}]"/>
+                <img 
+                    :src="img.image" v-if="showImages"
+                    :class="['vc-slideshow-img',{'vc-slideshow-is-vertical': img.isVertical, 'vc-slideshow-is-horizontal': img.isHorizontal}]"
+                />
             </slide-animation>
         </div>
     </div>
@@ -21,13 +23,8 @@
             setTimeout(()=> {
                 this.showImages = true;
             }, 10);
-            this.playLeave(this.leaveStartTime);
         },
         computed: {
-            leaveStartTime(){
-                //100 - beforeEnter timeout
-                return this.slidesInterval - this.animationDuration + 100;
-            },
             horizontalImages(){
                 return this.images.filter(item => item.isHorizontal)
             },
@@ -50,22 +47,10 @@
             }
         },
         watch: {
-            status(newVal){
-                //if paused - stop animation timeout
-                if (newVal == 2) {
-                    clearTimeout(this.startLeaveTimeout);
-                }
-                //if resumed - play leave animation immediately
-                if (newVal == 3) {
-                    this.playLeave(0);
-                }
-            }
         },
         data(){
             return {
-                showImages: false,
-                startLeaveTimeout: 0,
-                playLeaveTimeout: 0,
+                showImages: false
             }
         },
         methods: {
@@ -87,14 +72,6 @@
                     }
                 });
             },
-            playLeave(time){
-                clearTimeout(this.startLeaveTimeout);
-                this.startLeaveTimeout = setTimeout(()=> {
-//                    console.log('playLeave');
-                    this.showImages = false;
-                }, time);
-            },
-
             setFirstVertical(slide){
                 slide.sort((x, y) => x.isVertical ? -1 : y.isVertical ? 1 : 0);
             },

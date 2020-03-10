@@ -3,12 +3,10 @@
         <slideshow :images="images"
                    :collageSizeMin="3"
                    :collageSizeMax="5"
-                   :slidesInterval="4000"
                    :showNoImagesMsg="true"
                    noImagesMsg="No Images"
                    :showLoadingMsg="true"
                    loadingMsg="Loading..."
-                   :keyboardNavigation="true"
                    height="100%">
         </slideshow>
     </div>
@@ -34,7 +32,6 @@
                     {image: "http://nexusandme.com/wp-content/uploads/2014/06/Ferris-Wheel.jpg"},
                     {image: "http://unmaskmycity.org/wp-content/uploads/2017/01/cityneighborhood.jpg"},
                     {image: "https://wallpapershome.com/images/pages/pic_v/660.jpg"},
-                    {image: "http://www.manager.bg/sites/default/files/mainimages/20aa_29.jpg"},
                     {image: "https://cdn.pixabay.com/photo/2019/09/28/05/10/sunset-4509879_1280.jpg"},
                     {image: "https://images.wallpaperscraft.com/image/road_marking_bridge_123398_1920x1080.jpg"},
                     {image: "https://stmed.net/sites/default/files/cities-wallpapers-28512-590093.jpg"},
@@ -44,7 +41,6 @@
                     {image: "https://cdn.pixabay.com/photo/2019/09/30/18/41/taxi-4516525_1280.jpg"},
                     {image: "https://images.unsplash.com/photo-1541780815498-ffd0f2d0d0af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"},
                     {image: "https://images.unsplash.com/photo-1536235799634-c6c21fdc2b9d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"},
-                    {image: "https://data.whicdn.com/images/126024359/large.jpg"},
                     {image: "https://images.wallpaperscraft.com/image/bridge_night_city_lighting_125945_1280x720.jpg"},
                     {image: "https://images.unsplash.com/photo-1501464915526-070295e4768d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"},
                     {image: "https://images.wallpaperscraft.com/image/architecture_building_sky_114682_1920x1080.jpg"},

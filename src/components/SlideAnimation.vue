@@ -1,9 +1,10 @@
 <template>
     <transition functional
-                      @enter="enterEl"
-                      @leave="leaveEl"
-                      @before-enter="beforeEnterEl"
-                      :css="false">
+        @enter="enterEl"
+        @leave="leaveEl"
+        @before-enter="beforeEnterEl"
+        :css="false"
+    >
         <slot></slot>
     </transition>
 </template>

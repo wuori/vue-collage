@@ -10,14 +10,13 @@
         <slot name="loader" v-if="showLoadingMsg && isLoading">
             <loading-spinner :delay="1500" :loader="isLoading" :text="loadingMsg"></loading-spinner>
         </slot>
-        <div :class="['vc-slideshow-slide', {'vc-slideshow-active' : activeSlideIdx == idx}]"
-             v-for="(slide, idx) in slides" :key="idx">
-            <component :is="slideTemplate(slide.length)"
-                       :animationDuration="animationDuration"
-                       :slidesInterval="slidesInterval"
-                       v-if="activeSlideIdx == idx"
-                       :status="status"
-                       :images="slide"/>
+        <div :class="['vc-slideshow-slide', 'vc-slideshow-active']">
+            <component 
+                :is="slideTemplate(slide.length)"
+                :animationDuration="animationDuration"
+                :status="status"
+                :images="slide"
+            />
         </div>
     </div>
 </template>
@@ -32,7 +31,7 @@
     import './assets/slides.scss'
     import './assets/animation.scss'
     export default {
-        name: 'VueCollageSlideshow',
+        name: 'VueCollage',
         components: {
             SimpleSlide, TripleSlide, FourImagesSlide, LoadingSpinner, FiveImagesSlide
         },
@@ -45,14 +44,9 @@
                 type: String,
                 default: '600px'
             },
-            slidesInterval: {
-                type: Number,
-                default: 4000,
-                validator: (value) => value >= 1000
-            },
             collageSizeMin: {
                 type: Number,
-                default: 2,
+                default: 1,
                 validator: (value) => value >= 1 && value <= 5
             },
             collageSizeMax: {
@@ -76,20 +70,13 @@
                 type: String,
                 default: 'Loading...',
             },
-            keyboardNavigation: {
-                type: Boolean,
-                default: false,
-            },
         },
         data(){
             return {
-                slides: [],
+                slide: {},
                 isLoading: false,
                 status: 0, //  0 = idle, 1 = running, 2 = paused, 3 = resumed
-                slidesTimeout: false,
-                activeSlideIdx: 0,
-                animationDuration: 500,
-                animationTimeout: false
+                animationDuration: 500
             }
         },
         computed: {
@@ -101,17 +88,15 @@
             if (this.noImages) return;
             this.isLoading = true;
             this.loadImages(this.images)
-                    .then(values => {
-                        this.createCollages(values.filter(item => !item.is_error));
-                    })
-                    .catch(()=> {
-//                       console.log(er);
-                    })
-                    .finally(()=> {
-                        this.isLoading = false;
-                        this.play();
-                        if (this.keyboardNavigation) window.addEventListener('keyup', this.pressKey)
-                    });
+                .then(values => {
+                    this.createCollage(values.filter(item => !item.is_error));
+                })
+                .catch(()=> {
+                    //console.log(er);
+                })
+                .finally(()=> {
+                    this.isLoading = false;
+                });
         },
         methods: {
             slideTemplate(count){
@@ -125,80 +110,6 @@
                     default:
                         return 'SimpleSlide';
                 }
-            },
-            pressKey(e){
-                switch (e.keyCode) {
-                    case 32:
-                        this.onKeySpace();
-                        break;
-                    case 37:
-                        this.onKeyLeft();
-                        break;
-                    case 39:
-                        this.onKeyRight();
-                        break;
-                }
-            },
-            onKeySpace(){
-                //                    console.log(this.status);
-                switch (this.status) {
-                    case 1:
-                    case 3:
-                        this.pause();
-                        break;
-                    case 2:
-                        this.resume();
-                        break;
-                    default:
-                        this.play()
-                }
-            },
-            onKeyLeft(){
-                clearTimeout(this.animationTimeout);
-                this.animationTimeout = setTimeout(this.previousSlide, this.animationDuration);
-            },
-            onKeyRight(){
-                clearTimeout(this.animationTimeout);
-                this.animationTimeout = setTimeout(this.nextSlide, this.animationDuration);
-            },
-            pause(){
-//                console.log('pause');
-                clearTimeout(this.slidesTimeout);
-                this.status = 2;
-            },
-            resume(){
-//                console.log('resume');
-                this.status = 3;
-                clearTimeout(this.animationTimeout);
-                this.animationTimeout = setTimeout(this.nextSlide, this.animationDuration);
-            },
-            play(){
-                if (this.slides.length <= 0) return;
-//                console.log('play');
-                this.startSlidesTimeout();
-            },
-            nextSlide(){
-                this.activeSlideIdx++;
-                if (this.activeSlideIdx >= this.slides.length) {
-                    this.activeSlideIdx = 0;
-                }
-//               console.log('nextSlide', this.activeSlideIdx);
-                if (this.status !== 2) this.startSlidesTimeout();
-            },
-            previousSlide(){
-                this.activeSlideIdx--;
-                if (this.activeSlideIdx < 0) {
-                    this.activeSlideIdx = this.slides.length - 1;
-                }
-//               console.log('previousSlide', this.activeSlideIdx);
-                if (this.status !== 2) this.startSlidesTimeout();
-            },
-            startSlidesTimeout(){
-                this.status = 1;
-                clearTimeout(this.slidesTimeout);
-                this.slidesTimeout = setTimeout(()=> {
-                    this.nextSlide();
-                }, this.slidesInterval);
             },
             loadImage(src){
                 return new Promise(function (resolve) {
@@ -228,31 +139,12 @@
                 });
                 return Promise.all(promises);
             },
-            getRandomInt(min, max) {
-                let min_val = Math.min(min, max);
-                let max_val = Math.max(min, max);
-                min_val = Math.min(Math.max(Math.ceil(min_val), 1), 5);
-                max_val = Math.min(Math.max(Math.floor(max_val), 1), 5);
-                return Math.floor(Math.random() * (max_val - min_val + 1)) + min_val;
-            },
-            createCollages(images){
+            createCollage(images){
                 let index = 0;
-                let size = 1;
-                while (index < images.length) {
-                    size = this.getRandomInt(this.collageSizeMin, this.collageSizeMax);
-                    let slide = images.slice(index, size + index);
-                    this.slides.push(slide);
-                    index = size + index;
-                }
-            },
-            add(images){
-                this.loadImages(images)
-                        .then(values => {
-                            this.createCollages(values.filter(item => !item.is_error));
-                        })
-                        .catch(()=> {
-//                       console.log(er);
-                        })
+                let size = this.collageSizeMin;
+                size = (this.collageSizeMax > this.images.length) ? this.images.length : this.collageSizeMax;
+                let slide = images.slice(index, size + index);
+                this.slide = slide;
             }
         }
     }
