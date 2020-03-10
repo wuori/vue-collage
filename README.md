@@ -47,17 +47,21 @@ export default {
 | loadingMsg          | String    | 'Loading...'                                    | Define the text of the preloader message |
 
 #### Slots:
+
 "loader" - slot to place loading message when images are loading
+
 ```
 <template slot="loader">
     <div id="loader">Loading...</div>
 </template>
 ```
 "empty" - content to display when no items are present in the `images` array
- ```
+
+```
 <template slot="empty">
     <div id="no-images">No images</div>
 </template>
-            ```
+```
+
 ## Contribution
 Feel free to contribute on [GitHub](https://github.com/wuori/vue-collage)
