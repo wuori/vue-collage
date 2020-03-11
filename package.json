@@ -1,7 +1,7 @@
 {
   "name": "vue-collage",
   "description": "Responsive, animated collages for Vue.js",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wuori/vue-collage.git"
