@@ -30,7 +30,7 @@
         mixins: [SimpleSlide],
 
         computed: {
-            slideClass(){;
+            slideClass(){
                 let rndInt = this.getRandomInt(1, 3);
                 //the best template for the case when there is only one vertical image
                 //do not use other templates if there are only a few horizontal images

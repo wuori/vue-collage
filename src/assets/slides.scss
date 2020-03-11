@@ -1,6 +1,11 @@
-.vc-slideshow {
-  $slidePadding: 0.4em;
-  $slidePaddingHalf: ($slidePadding/2);
+.vc-slideshow { 
+
+  //$slidePadding: 0.4em;
+  //$slidePaddingHalf: ($slidePadding / 2);
+
+  $slidePadding: 0px;
+  $slidePaddingHalf: 0px;
+
   .vc-slideshow-slide-inner {
     height: 100%;
     width: 100%;
@@ -611,6 +616,5 @@
         }
       }
     }
-    
   }
-  }
+}

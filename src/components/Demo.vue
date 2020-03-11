@@ -1,13 +1,16 @@
 <template>
     <div id="app">
-        <collage :images="images"
-                   :collageSizeMin="3"
-                   :collageSizeMax="6"
-                   :showNoImagesMsg="true"
-                   noImagesMsg="No Images"
-                   :showLoadingMsg="true"
-                   loadingMsg="Loading..."
-                   height="100%">
+        <collage 
+            :images="images"
+            :collageSizeMin="6"
+            :collageSizeMax="6"
+            :showNoImagesMsg="true"
+            noImagesMsg="No Images"
+            :showLoadingMsg="true"
+            loadingMsg="Loading..."
+            height="100%"
+            :noGutter="true"
+        >
         </collage>
     </div>
 </template>
@@ -44,23 +47,6 @@
                     {image: "https://images.wallpaperscraft.com/image/bridge_night_city_lighting_125945_1280x720.jpg"},
                     {image: "https://images.unsplash.com/photo-1501464915526-070295e4768d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"},
                     {image: "https://images.wallpaperscraft.com/image/architecture_building_sky_114682_1920x1080.jpg"},
-                    {image: "https://images.wallpaperscraft.com/image/bridge_night_city_tokyo_120902_1280x720.jpg"},
-                    {image: "https://cdn.pixabay.com/photo/2014/05/02/23/46/new-york-city-336475_1280.jpg"},
-                    {image: "https://images.unsplash.com/photo-1541780050666-f64773a3d779?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"},
-                    {image: "https://images.wallpaperscraft.com/image/bridge_night_city_bay_124832_1280x720.jpg"},
-                    {image: "https://images.unsplash.com/photo-1519359810479-37e924ddd0b4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"},
-                    {image: "https://images.unsplash.com/photo-1531149209156-122dcea6fdd2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"},
-                    {image: "https://images.unsplash.com/photo-1531496397966-75128d275fe5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"},
-                    {image: "https://images.wallpaperscraft.com/image/bridge_night_city_city_lights_132392_1280x720.jpg"},
-                    {image: "https://images.unsplash.com/photo-1519895663930-861efd5fd07f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"},
-                    {image: "https://images.wallpaperscraft.com/image/trolley_stop_city_evening_lighting_119292_1280x720.jpg"},
-                    {image: "https://images.wallpaperscraft.com/image/urban_landscape_night_lights_san_francisco_california_usa_hdr_54872_1280x720.jpg"},
-                    {image: "https://images.unsplash.com/photo-1529668359626-876c212a4ba7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"},
-                    {image: "https://images.unsplash.com/photo-1533579494325-7a7ad78b6645?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"},
-                    {image: "https://images.unsplash.com/photo-1531932594968-e5e5e9dee95a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"},
-                    {image: "https://images.wallpaperscraft.com/image/san_francisco_night_bridge_lights_hdr_58444_1280x720.jpg"},
-                    {image: "https://images.unsplash.com/photo-1467217440414-bf182fc492d9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"},
-
                 ]
             }
         }

@@ -1,5 +1,5 @@
 <template>
-    <div class="vc-slideshow" :style="{height}">
+    <div :class="['vc-slideshow', gutterClass]" :style="{height}">
         <transition name="fade">
             <slot name="empty" v-if="noImages  && !isLoading && showNoImagesMsg">
                 <div class="vc-slideshow-h1">
@@ -55,6 +55,10 @@
                 default: 5,
                 validator: (value) => value >= 1 && value <= 6
             },
+            noGutter: {
+                type: Boolean,
+                default: false,
+            },
             noImagesMsg: {
                 type: String,
                 default: 'No Images',
@@ -81,6 +85,9 @@
             }
         },
         computed: {
+            gutterClass(){
+                return (this.noGutter) ? 'no-gutter' : 'gutter';
+            },
             noImages(){
                 return !this.images || this.images.length <= 0;
             }
